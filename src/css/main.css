@@ -1,0 +1,94 @@
+/* =========================================
+    BASE, VARIÁVEIS E TIPOGRAFIA
+========================================= */
+
+/* 1. Deslize suave no site todo (se já tiver, não precisa repetir) */
+html {
+    scroll-behavior: smooth; 
+}
+
+/* 2. Parada específica para a seção de Funções */
+#funcoes {
+    scroll-margin-top: 100px; /* Altere este valor para mais ou menos distância */
+}
+
+/* 3. Parada específica para a seção de Planos */
+#planos {
+    scroll-margin-top: 190px; /* Exemplo: uma parada mais distante */
+}
+
+/* 4. Parada específica para a seção da Equipe */
+#equipe {
+    scroll-margin-top: 100px; /* Exemplo: uma parada mais próxima */
+}
+
+/* Define a parada específica para os planos */
+.plans {
+    scroll-margin-top: 120px; 
+}
+
+/* Define uma parada diferente para a equipe */
+.team {
+    scroll-margin-top: 80px; 
+}
+
+@font-face { 
+    font-family: 'Nourd'; 
+    src: url('/fonts/nourd_regular.ttf') format('truetype'); 
+    font-weight: 400; 
+    font-display: swap; 
+}
+
+:root {
+    --font-primary: 'Nourd', sans-serif;
+    --color-brand-start: #FE6B05;
+    --color-brand-end: #FE4A01;
+    --gradient-primary: linear-gradient(135deg, var(--color-brand-start), var(--color-brand-end));
+    --color-purple-start: #9A05FE;
+    --color-purple-end: #2701FE;
+    --gradient-purple: linear-gradient(135deg, var(--color-purple-start), var(--color-purple-end));
+    --color-card-border: rgba(128, 128, 128, 0.2);
+    --color-text: #1A1A1A;
+    --color-text-muted: #757575;
+    --color-bg: #FFFFFF;
+    --page-margin-sides: 18%;
+}
+
+[data-theme="dark"] { 
+    --color-text: #FFFFFF; 
+    --color-text-muted: #FFFFFF; 
+    --color-bg: #1A1A1A; 
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html {
+    /* A trava principal já estava aqui, ótimo! */
+    overflow-x: hidden;
+    transition: background-color 0.3s ease; 
+}
+
+body { 
+    font-family: var(--font-primary); 
+    background-color: var(--color-bg); 
+    color: var(--color-text); 
+    
+    /* Removemos a margin e juntamos os respiros laterais com os 80px do topo no padding */
+    margin: 0;
+    padding: 80px var(--page-margin-sides) 0; 
+    
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden; 
+}
+
+/* O ajuste do Mobile que fizemos antes, agora usando padding */
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 80px 15px 0; 
+    }
+}

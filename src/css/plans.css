@@ -1,0 +1,116 @@
+/* =========================================
+   PLANOS - VERSÃO PC (DESKTOP)
+========================================= */
+
+.plans {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* O título agora tem EXATAMENTE o mesmo tamanho do banner em qualquer tela */
+.plans-title {
+    font-size: clamp(2rem, 4vw, 3.2rem) !important; /* Idêntico ao banner-title */
+    font-weight: bold;
+    text-align: center;
+    
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    margin-top: 80px;     
+    margin-bottom: 30px; 
+    white-space: normal;
+    padding: 0 20px; /* Evita que o texto encoste nas bordas no celular */
+}
+
+/* 1. EXTINÇÃO TOTAL DOS BOTÕES DESNECESSÁRIOS
+   Garante que os botões sumam tanto no Desktop quanto no Mobile */
+.carousel-controls,
+.carousel-btn,
+.plans button[id*="Prev"],
+.plans button[id*="Next"] {
+    display: none !important;
+}
+
+/* Centralização dos cartões no computador */
+.plans-container, .plans-wrapper {
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: stretch !important;    
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto !important; 
+}
+
+.plan-card {
+    margin: 0 !important;
+}
+
+
+/* =========================================
+   PLANOS - VERSÃO CELULAR (MOBILE)
+========================================= */
+@media (max-width: 992px) {
+    
+    .plans-title {
+        /* Mantém o tamanho do banner, apenas ajusta os respiros no celular */
+        margin-top: 150px;   
+        margin-bottom: 12px; 
+    }
+    
+    /* Configuração do carrossel por toque */
+    .plans-container, .plans-wrapper {
+        display: flex !important;
+        justify-content: flex-start !important; 
+        overflow-x: auto !important; 
+        scroll-snap-type: x mandatory; 
+        padding: 20px 30px !important; 
+        gap: 20px;
+        width: 100%;
+        max-width: none; 
+        -webkit-overflow-scrolling: touch; 
+        
+        /* 2. MATANDO A BARRA DE ROLAGEM NO MOBILE
+           O toque continua funcionando 100%, mas a barra feia some */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE e Edge */
+    }
+
+    /* Oculta a barra de rolagem no Chrome, Safari e Opera */
+    .plans-container::-webkit-scrollbar,
+    .plans-wrapper::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .plan-card {
+        flex: 0 0 280px; 
+        scroll-snap-align: center; 
+        
+        /* CORREÇÃO AQUI: Agora ele segue o tema (branco no light, escuro no dark) */
+        background: var(--color-bg) !important; 
+        
+        transform: none !important; 
+        transition: none !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important; 
+    }
+
+    .plan-card:hover {
+        transform: none !important;
+    }
+
+    .plan-card.premium,
+    .plan-card.featured {
+        border: 2px solid var(--color-brand-start, #fe6b05) !important;
+        background: var(--color-bg, #ffffff) !important; 
+    }
+
+    .plan-card.business {
+        border: 2px solid var(--color-purple-start, #9a05fe) !important;
+        background: var(--color-bg, #ffffff) !important;
+    }
+}
