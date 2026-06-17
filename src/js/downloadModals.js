@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (isAndroid) {
                 const link = document.createElement('a');
-                link.href = 'public/apk/Nutria.apk';
+                link.href = '/website/apk/Nutria.apk';
                 link.download = 'Nutria.apk';
                 document.body.appendChild(link);
                 link.click();
